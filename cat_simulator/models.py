@@ -18,6 +18,7 @@ class Cat(models.Model):
         if self.state != 'sleep':
             self.fullness += 15
             self.happiness += 5
+            self.set_state('happy')
             if self.fullness == 100:
                 self.happiness -= 30
             self.check_state()
@@ -41,8 +42,24 @@ class Cat(models.Model):
 
     def check_state(self):
         if self.happiness <= 30:
-            self.state = 'sad'
+            self.set_state('sad')
+        else:
+            self.set_state('happy')
 
-    def failure(self):
+    def check_stats(self):
+        if self.happiness < 0:
+            self.happiness = 0
+
+        if self.fullness < 0:
+            self.fullness = 0
+
+        if self.happiness > 100:
+            self.happiness = 100
+
+        if self.fullness > 100:
+            self.fullness = 100
+
+    @staticmethod
+    def failure():
         number = randint(1, 3)
         return number == 1

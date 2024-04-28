@@ -16,6 +16,7 @@ def set_state_view(request):
     cat = Cat.objects.first()
     action = request.POST['action'].lower()
     getattr(cat, action)()
+    cat.check_stats()
     cat.save()
     return redirect('game')
 
