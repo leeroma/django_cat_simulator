@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Cat Simulator</title>
+</head>
+<body style="background-color: skyblue">
+<div class="container d-flex align-items-center justify-content-center" style="height: 700px">
+    <div class="text-center">
+        <div style="border-radius: 20px; padding: 30px; background-color: lightcoral">
+            <h1 style="color: white">Welcome to Cat Simulator</h1>
+        </div>
+        <br>
+        <br>
+        <form method="post" action="{% url 'create_cat' %}">
+            {% csrf_token %}
+            <label for="cat_name" style="font-size: 20px; color: white">Enter your cat's name here</label>
+            <input name="name" id="cat_name" class="form-control form-control-lg" type="text"
+                   placeholder="For example: Sam" style="border-radius: 30px">
+            <br>
+            <input type="submit" value="Create" class="btn btn-outline-dark"
+                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Cat Simulator</title>
+</head>
+<body style="background-color: skyblue">
+<div class="container d-flex justify-content-center">
+    <div class="card mb-3" style="width: 400px; background-color: lightsalmon; color: white">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static image %}" class="img-fluid rounded-start" alt="Cat">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body" style="font-weight: bold">
+                    <h5 class="card-title">Name: {{ cat.name }}</h5>
+                    <p class="card-text">Age: {{ cat.age }} y.o.</p>
+                    <p class="card-text">Happiness level: {{ cat.happiness }}</p>
+                    <p class="card-text">Fullness level: {{ cat.fullness }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <form method="post" action="{% url 'set_state' %}">
+            {% csrf_token %}
+            <input name="action" type="submit" value="Feed" class="btn btn-outline-dark"
+                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+            <input name="action" type="submit" value="PLay" class="btn btn-outline-dark"
+                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+            <input name="action" type="submit" value="Sleep" class="btn btn-outline-dark"
+                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+        </form>
+    </div>
+</div>
+</body>
+</html>
