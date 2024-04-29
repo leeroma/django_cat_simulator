@@ -14,36 +14,38 @@
     <title>Cat Simulator</title>
 </head>
 <body style="background-color: oldlace; font-family: 'Concert One', sans-serif;">
-
-<div class="container d-flex justify-content-center ">
-    <div class="card mb-2" style="width: 500px; background-color: skyblue; color: white; border-radius: 10px">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{% static image %}" class="img-fluid rounded-start" alt="Cat">
-            </div>
-            <div class="col-md-6">
-                <div class="card-body" style="font-weight: bold; color: white">
-                    <h5 class="card-title">Name: {{ cat.name }}</h5>
-                    <p class="card-text">Age: {{ cat.age }} y.o.</p>
-                    <p class="card-text">Happiness level: {{ cat.happiness }}</p>
-                    <p class="card-text">Fullness level: {{ cat.fullness }}</p>
+<div class="container d-flex flex-column justify-content-center" style="height: 100vh">
+    <div class="d-flex justify-content-center">
+        <div class="card mb-2" style="width: 500px; background-color: skyblue; color: white; border-radius: 10px">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{% static image %}" class="img-fluid rounded-start" alt="Cat">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body" style="font-weight: bold; color: white">
+                        <h5 class="card-title">Name: {{ cat.name }}</h5>
+                        <p class="card-text">Age: {{ cat.age }} y.o.</p>
+                        <p class="card-text">Happiness level: {{ cat.happiness }}</p>
+                        <p class="card-text">Fullness level: {{ cat.fullness }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container d-flex justify-content-center ">
-    <div class="row">
-        <form method="post" action="{% url 'set_state' %}">
-            {% csrf_token %}
-            <input name="action" type="submit" value="Feed" class="btn btn-outline-dark"
-                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
-            <input name="action" type="submit" value="PLay" class="btn btn-outline-dark"
-                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
-            <input name="action" type="submit" value="Sleep" class="btn btn-outline-dark"
-                   style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
-        </form>
+    <div class="container d-flex justify-content-center ">
+        <div class="row">
+            <form method="post" action="{% url 'set_state' %}">
+                {% csrf_token %}
+                <input name="action" type="submit" value="Feed" class="btn btn-outline-dark"
+                       style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+                <input name="action" type="submit" value="PLay" class="btn btn-outline-dark"
+                       style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+                <input name="action" type="submit" value="Sleep" class="btn btn-outline-dark"
+                       style="border: none; color: white; border-radius: 30px; background-color: lightsalmon">
+            </form>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

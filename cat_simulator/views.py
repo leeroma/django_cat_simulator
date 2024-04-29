@@ -8,12 +8,15 @@ def home_view(request):
 
 
 def create_cat_view(request):
-    Cat.objects.create(name=request.POST['name'])
+    if request.POST['name']:
+        Cat.objects.create(name=request.POST['name'])
+    else:
+        Cat.objects.create()
     return redirect('game')
 
 
 def set_state_view(request):
-    cat = Cat.objects.first()
+    cat = Cat.objects.last()
     action = request.POST['action'].lower()
     getattr(cat, action)()
     cat.check_stats()
@@ -22,6 +25,6 @@ def set_state_view(request):
 
 
 def game_view(request):
-    cat = Cat.objects.first()
+    cat = Cat.objects.last()
     image = f'/{cat.state}.png'
     return render(request, 'game.html', {'image': image, 'cat': cat})
